@@ -3,15 +3,5 @@
   "installCommand": "bun install",
   "devCommand": "bun run dev",
   "framework": "nuxtjs",
-  "regions": ["iad1"],
-  "env": {
-    "NUXT_PUBLIC_API_URL": {
-      "description": "API Base URL",
-      "default": "http://localhost:3000"
-    },
-    "NUXT_PUBLIC_REQUEST_TIMEOUT": {
-      "description": "Request timeout (milliseconds)",
-      "default": "30000"
-    }
-  }
+  "regions": ["iad1"]
 }

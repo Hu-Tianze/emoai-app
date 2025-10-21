@@ -10,7 +10,10 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
 
-  devtools: { enabled: true },
+  // 构建配置
+  build: {
+    transpile: ['@nuxt/ui', 'tailwindcss'],
+  },
 
   app: {
     head: {
@@ -59,6 +62,18 @@ export default defineNuxtConfig({
       fs: {
         strict: false,
       },
+    },
+    // 修复 Tailwind CSS ESM 导入问题
+    ssr: {
+      external: ['tailwindcss'],
+    },
+  },
+
+  // Nitro 服务器配置
+  nitro: {
+    prerender: {
+      ignore: ['/api'],
+      crawlLinks: false,
     },
   },
 });
