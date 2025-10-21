@@ -36,7 +36,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
-          vercel-args: '--prod --cwd frontend'
+          vercel-args: '--prod'
           working-directory: ./frontend
 
       - name: Notify deployment success
