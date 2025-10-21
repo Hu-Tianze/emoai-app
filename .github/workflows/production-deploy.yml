@@ -18,10 +18,14 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies (bun)
-        run: bun install
+        run: |
+          cd frontend
+          bun install
 
       - name: Build project (Nuxt)
-        run: bun run build
+        run: |
+          cd frontend
+          bun run build
         env:
           NUXT_PUBLIC_API_URL: ${{ secrets.NUXT_PUBLIC_API_URL }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
@@ -32,7 +36,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
-          vercel-args: '--prod'
+          vercel-args: '--prod --cwd frontend'
           working-directory: ./frontend
 
       - name: Notify deployment success
