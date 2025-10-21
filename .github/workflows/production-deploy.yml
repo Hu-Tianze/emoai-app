@@ -1,0 +1,42 @@
+name: Production Deployment
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+ 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies (bun)
+        run: bun install
+
+      - name: Build project (Nuxt)
+        run: bun run build
+        env:
+          NUXT_PUBLIC_API_URL: ${{ secrets.NUXT_PUBLIC_API_URL }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+
+      - name: Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./frontend
+
+      - name: Notify deployment success
+        if: success()
+        run: |
+          echo "🎉 Production deployment completed successfully!"
+          echo "Site URL: https://emoai-app.vercel.app"
