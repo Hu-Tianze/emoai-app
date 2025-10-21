@@ -1,0 +1,268 @@
+/* 全局样式 */
+
+/* CSS 变量定义 */
+:root {
+  /* 颜色 */
+  --color-primary: #0084FF; /* Change 链接颜色 */
+  --color-secondary: #8B8B8B; /* 灰色 */
+  --color-danger: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-background: #F5E8D0; /* 页面背景色 */
+  --color-surface: #F5E8D0; /* 主容器背景色 */
+  --color-border: #DDC8A0; /* 边框色 */
+  --color-header-bg: #F2D7A9; /* 头部背景色 */
+  --color-text-primary: #8B5E2E; /* 主要文字颜色 (深棕色) */
+  --color-text-secondary: #8B8B8B; /* 副标题/辅助文字 (灰色) */
+  --color-text-white: #FFFFFF; /* 白色文字 */
+  --color-bubble-bg: #FFFFFF; /* 对话气泡背景 */
+  --color-bubble-border: #CCCCCC; /* 对话气泡边框 */
+  --color-input-border: #CCCCCC; /* 输入框边框 */
+
+  /* Emotionsfarben */
+  --color-emotion-happy: #fbbf24;
+  --color-emotion-satisfied: #34d399;
+  --color-emotion-calm: #60a5fa;
+  --color-emotion-anxious: #f87171;
+  --color-emotion-angry: #ef4444;
+  --color-emotion-sad: #a78bfa;
+
+  /* Größen */
+  --size-sm: 0.5rem;
+  --size-md: 1rem;
+  --size-lg: 1.5rem;
+  --size-xl: 2rem;
+  --size-2xl: 3rem;
+
+  /* Radien */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Schatten */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Übergänge */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* Globale Zurücksetzungen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */ /* 暂时移除此属性 */
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  background-image: none;
+  background-repeat: repeat;
+  color: var(--color-text-primary);
+  font-family: system-ui, -apple-system, sans-serif; /* 使用系统字体 */
+  line-height: 1.6;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Link-Stile */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Button-Zurücksetzungen */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Eingabestile */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Listenstile */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Code-Blöcke */
+code,
+pre {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Tabellen样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  background-color: var(--color-surface);
+  font-weight: 600;
+}
+
+/* Scrollbar-Stile */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Hilfsklassen */
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 1200px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.gap-sm {
+  gap: 0.5rem;
+}
+
+.gap-lg {
+  gap: 1.5rem;
+}
+
+.mt {
+  margin-top: 1rem;
+}
+
+.mb {
+  margin-bottom: 1rem;
+}
+
+.px {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

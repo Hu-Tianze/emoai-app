@@ -1,0 +1,26 @@
+# Bun 配置文件
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# 安装依赖配置
+cache = { dir = ".bun/cache", disableWarning = true }
+
+# 性能优化
+frozen_lockfile = false
+production = false
+
+[runtime]
+# 运行时配置
+env = { "NODE_ENV" = "development" }
+
+[test]
+# 测试配置
+timeout = 30000
+
+[[test.preprocessors]]
+pattern = "**/*.test.ts"
+loader = "tsx"
+
+[[test.preprocessors]]
+pattern = "**/*.spec.ts"
+loader = "tsx"
