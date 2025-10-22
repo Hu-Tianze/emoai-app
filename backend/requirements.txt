@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+openai
+transformers
+torch
+faiss-cpu
+emoji
+pandas
+kagglehub
+numpy
+requests
+matplotlib
